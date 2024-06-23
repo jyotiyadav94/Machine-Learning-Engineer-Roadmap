@@ -79,6 +79,10 @@ The client can start polling the `/results/{task_id}` endpoint for each of the 1
 - 
 
 
+### FastAPI Configuration
+- **Worker Processes/Threads**: Increase the number of worker processes (Gunicorn) or threads (Uvicorn) based on your hardware and the request validation complexity.
+
+
 ### Redis 
 
 - Redis is an in-memory data store
@@ -86,6 +90,4 @@ The client can start polling the `/results/{task_id}` endpoint for each of the 1
 - Traditionally used as a caching layer
 - Data stored in RAM (very fast) 
 
-### FastAPI Configuration
 
-- **Worker Processes/Threads**: Increase the number of worker processes (Gunicorn) or threads (Uvicorn) based on your hardware and the request validation complexity.

@@ -118,3 +118,82 @@ The client can start polling the `/results/{task_id}` endpoint for each of the 1
 
 ### Further Reading
 [Deploying ML Models in Production with FastAPI and Celery](https://towardsdatascience.com/deploying-ml-models-in-production-with-fastapi-and-celery-7063e539a5db)
+
+
+
+# Celery Overview
+
+## What is a Task Queue?
+
+Task queues serve as a mechanism to distribute work across threads or machines. A task queue's fundamental unit of work is called a task. Dedicated worker processes continually monitor these task queues for new work to execute.
+
+Celery communicates through messages, typically using a broker to mediate between clients and workers. When a client initiates a task, it adds a message to the queue, which the broker then delivers to an available worker.
+
+A Celery system can scale horizontally and ensure high availability by employing multiple workers and brokers.
+
+Celery is primarily implemented in Python, but the underlying protocol can be implemented in any programming language. Besides Python, there are also libraries like node-celery and node-celery-ts for Node.js, and a PHP client.
+
+Language interoperability can be achieved by exposing an HTTP endpoint and creating tasks that request it (webhooks).
+
+## Version Requirements
+
+Celery version 5.3 is compatible with:
+
+- Python versions 3.8, 3.9, 3.10, 3.11
+- PyPy3.8 and newer (v7.3.11+)
+
+Celery 4.x was the last version to support Python 2.7. Celery 5.x requires Python 3.6 or newer, with specific requirements for each minor version.
+
+For older Python versions:
+
+- Python 2.7 or Python 3.5: Use Celery series 4.4 or earlier.
+- Python 2.6: Use Celery series 3.1 or earlier.
+- Python 2.5: Use Celery series 3.0 or earlier.
+- Python 2.4: Use Celery series 2.2 or earlier.
+
+Note: Celery does not officially support Microsoft Windows due to minimal funding.
+
+## Message Transport Requirements
+
+Celery requires a message transport system to send and receive messages. While RabbitMQ and Redis are feature-complete broker transports, there are experimental solutions, including SQLite for local development.
+
+Celery can operate on a single machine, across multiple machines, or even span across data centers.
+
+## Getting Started
+
+If you're new to Celery or upgrading from a previous version, start with these tutorials:
+
+- [First Steps with Celery](https://docs.celeryproject.org/en/stable/getting-started/first-steps-with-celery.html)
+- [Next Steps](https://docs.celeryproject.org/en/stable/getting-started/next-steps.html)
+
+## Features of Celery
+
+### Simple
+
+Celery is straightforward to use and maintain, requiring minimal configuration.
+
+### Highly Available
+
+Workers and clients automatically retry tasks in case of connection loss or failures, and some brokers support high availability through replication strategies.
+
+### Fast
+
+A single Celery process can handle millions of tasks per minute with sub-millisecond round-trip latency, especially when using RabbitMQ, librabbitmq, and optimized settings.
+
+### Flexible
+
+Nearly every aspect of Celery is customizable and extensible, including pool implementations, serializers, compression schemes, logging, schedulers, consumers, producers, broker transports, and more.
+
+## Example
+
+Here's a simple Celery application:
+
+```python
+from celery import Celery
+
+app = Celery('hello', broker='amqp://guest@localhost//')
+
+@app.task
+def hello():
+    return 'hello world'
+```

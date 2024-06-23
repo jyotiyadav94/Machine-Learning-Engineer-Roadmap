@@ -2,7 +2,8 @@
 
 **Asynchronous**: instead of directly returning a prediction the model service will return a unique identifier for a task. Whilst the prediction task is being completed by the model service the client is free to continue other processing. The result can then be fetched via a results endpoint using the unique task id.
 
-![alt text](images/image.png)
+<img width="758" alt="image" src="https://github.com/jyotiyadav94/Machine-Learning-Engineer-Roadmap/assets/72126242/2ddbd9ea-676e-4edf-ad4f-37fbe3c398e6">
+
 
 Here's a detailed design for a backend architecture that incorporates Celery, Redis, FastAPI, and RabbitMQ to handle multiple machine learning model requests efficiently:
 

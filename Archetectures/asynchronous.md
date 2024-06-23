@@ -9,25 +9,25 @@ Here's a detailed design for a backend architecture that incorporates Celery, Re
 
 Architecture Overview
 
-1. Client (Frontend): Initiates prediction requests with feature data (JSON) via a POST request to the FastAPI endpoint.
+1. **Client(Frontend)**: Initiates prediction requests with feature data (JSON) via a POST request to the FastAPI endpoint.
 
-2. FastAPI (API Gateway):
+2. **FastAPI(API Gateway)**:
     - Handles incoming requests.
     - Validates request data against a predefined schema.
     - Creates a Celery task (if validation succeeds) and passes it to the message broker (RabbitMQ).
     - Returns a unique task ID to the client for tracking.
     - Provides a results endpoint for clients to poll for prediction outcomes.
 
-3. RabbitMQ (Message Broker):
+3. **RabbitMQ(Message Broker)**:
     - Queues and distributes tasks to available Celery workers.
     - Ensures reliable task delivery and load balancing.
 
-4. Celery Workers (Prediction Engines):
+4. **Celery Workers(Prediction Engines)**:
     - Pick up tasks from the queue.
     - Execute predictions using the pre-trained ML model.
     - Store the prediction results in the Redis backend.
 
-5. Redis (Result Store):
+5. **Redis(Result Store)**:
     - Acts as a fast, in-memory data store for prediction results.
     - Allows efficient retrieval of results based on the task ID.
 

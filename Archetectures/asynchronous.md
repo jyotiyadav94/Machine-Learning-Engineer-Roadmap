@@ -76,6 +76,15 @@ The client can start polling the `/results/{task_id}` endpoint for each of the 1
 ### Redis Configuration
 
 - **Memory**: Ensure you have enough Redis memory to store the results of all concurrent tasks. Redis is in-memory, so plan accordingly.
+- 
+
+
+### Redis 
+
+- Redis is an in-memory data store
+- Uses key-value data structures
+- Traditionally used as a caching layer
+- Data stored in RAM (very fast) 
 
 ### FastAPI Configuration
 

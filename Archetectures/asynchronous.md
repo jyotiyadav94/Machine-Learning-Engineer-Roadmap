@@ -197,3 +197,62 @@ app = Celery('hello', broker='amqp://guest@localhost//')
 def hello():
     return 'hello world'
 ```
+
+
+# Continuous Integration (CI):
+
+## Focus
+The core of CI is to ensure that code changes from multiple developers can be integrated into a shared repository frequently and smoothly.
+
+## Process
+- Developers regularly commit code changes to a version control system (like Git).
+- Automated build processes compile the code and run unit tests to catch errors early.
+- If any tests fail, the team is notified immediately so they can fix the issues.
+
+## Benefits
+- Faster feedback on code quality.
+- Reduced risk of integration conflicts.
+- Improved collaboration among developers.
+
+# Continuous Delivery (CD):
+
+## Focus
+CD builds on CI by automating the release process up to the point where the software is ready for deployment to production.
+
+## Process
+- After passing CI, code changes are automatically deployed to a staging or testing environment.
+- Additional tests, like integration tests and user acceptance tests, are performed in this environment.
+- The software is packaged and prepared for production deployment, but the final deployment step is usually manual (e.g., requiring a button click or approval).
+
+## Benefits
+- Increased confidence in the release process.
+- Ability to release software more frequently.
+- Reduced manual effort in preparing releases.
+
+# Continuous Deployment (CD):
+
+## Focus
+Continuous Deployment takes CD a step further by automating the entire release process, including the deployment to production.
+
+## Process
+- Follows the same steps as Continuous Delivery, but the final deployment to production is automated.
+- Every change that passes the automated tests is immediately released to users.
+
+## Benefits
+- Fastest time to market for new features and bug fixes.
+- Minimized risk associated with releases (smaller, more frequent changes).
+- Increased customer satisfaction through rapid updates.
+
+| Feature                 | Continuous Integration (CI) | Continuous Delivery (CD) | Continuous Deployment (CD) |
+|-------------------------|------------------------------|--------------------------|----------------------------|
+| Automation scope        | Build and unit testing       | Build, testing, deployment| Build, testing, release    |
+| Deployment to prod      | No                           | Manual                   | Automatic                  |
+| Release frequency       | High                         | High                     | Highest                    |
+| Risk with each release  | Low                          | Low                      | Lowest                     |
+
+## Which one to choose?
+The choice depends on your team's maturity, risk tolerance, and business needs.
+
+- **CI:** A great starting point for most teams to improve code quality and collaboration.
+- **CD:** Suitable for teams that want faster release cycles and greater confidence in their releases.
+- **Continuous Deployment:** Best for mature teams with high confidence in their automated tests and a culture of rapid iteration.

@@ -30,3 +30,9 @@
 21. If there are lots of API load of requests in syncronous, how to handle, how to make robust?
 22. risk of asynchronous architecture?
 23. Error Handling: Handling errors and retries in asynchronous systems can be more challenging?
+24. What's the difference between mutable and immutable object in Python?
+25. Write a python decorator to cache recursive function results.
+
+
+# System Design 
+1. Design a typical machine learning system, from data gathering to deployment and monitoring for text classification.
